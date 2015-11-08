@@ -1,0 +1,20 @@
+#!/bin/sh
+
+echo "\033[1;32mDebugging started!\033[0m\n"
+
+filename="d_${1%.*}"
+
+if [ -s $filename ]; then
+  rm $filename
+fi
+
+g++ -std=c++11 -ggdb -O0 -Dssu1 -o $filename $1
+
+if [ -s $filename ]; then
+  echo "\n\033[1;32mOK. Debugging...\033[0m\n\n"
+  gdb $filename
+  rm $filename
+else
+  echo "\033[1;31mFAIL!\033[0m\n"
+fi
+

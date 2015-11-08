@@ -1,0 +1,9 @@
+#!/bin/sh
+
+if [ -s $1 ]; then
+  ulimit -s unlimited
+  ./$1
+else
+  echo "\033[1;31mFAIL!\033[0m\n"
+fi
+
